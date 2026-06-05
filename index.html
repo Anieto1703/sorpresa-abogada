@@ -12,41 +12,78 @@
     color: white;
     font-family: 'Arial', sans-serif;
     text-align: center;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
+    overflow-x: hidden;
   }
   .tarjeta {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
-    padding: 40px 30px;
+    padding: 30px 20px;
     border-radius: 20px;
     border: 1px solid rgba(255, 255, 255, 0.3);
-    max-width: 85%;
+    max-width: 90%;
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
     z-index: 10;
+    margin-top: 20px;
+    margin-bottom: 20px;
   }
   h1 { 
-    font-size: 2.2em; 
+    font-size: 2em; 
     margin-top: 0;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.6); 
   }
   p { 
-    font-size: 1.2em; 
-    line-height: 1.6; 
+    font-size: 1.1em; 
+    line-height: 1.5; 
     text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
   }
   .iconos { 
-    font-size: 3.5em; 
-    margin-bottom: 15px; 
+    font-size: 3em; 
+    margin-bottom: 10px; 
   }
+  .pregunta-container {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px dashed rgba(255,255,255,0.5);
+  }
+  .botones {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
+  }
+  button {
+    font-size: 1.1em;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    transition: transform 0.2s;
+  }
+  #btnSi {
+    background-color: #4CAF50;
+    color: white;
+  }
+  #btnSi:active {
+    transform: scale(0.9);
+  }
+  #btnNo {
+    background-color: #f44336;
+    color: white;
+  }
+  /* Animación de las figuras que caen */
   .particula {
-    position: absolute;
-    font-size: 22px;
+    position: fixed;
+    font-size: 24px;
     animation: caer linear infinite;
+    z-index: 1;
+    pointer-events: none;
   }
   @keyframes caer {
     0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
@@ -57,24 +94,65 @@
 <body>
 
   <div class="tarjeta">
-    <div class="iconos">⚖️ 👩‍⚖️ ❤️</div>
+    <div class="iconos">⚖️ 👩‍⚖️ 🐈 ❤️</div>
     <h1>¡Feliz Día de la Abogada,<br>Katherine Tueros!</h1>
     <p>Hoy en el Día de la Abogada Peruana, te deseo un día tan extraordinario como tú.</p>
-    <p>Admiro profundamente tu pasión, tu incansable búsqueda de la justicia y la brillante profesional en la que te has convertido. Eres mi inspiración y mi mayor orgullo.</p>
-    <p><strong>¡Sigue brillando, mi amor!</strong></p>
+    <p>Admiro profundamente tu pasión, tu incansable búsqueda de la justicia y la brillante profesional en la que te has convertido. Eres mi inspiración y mi mayor orgullo. 🐾💕</p>
+    
+    <div class="pregunta-container">
+      <p><strong>Pregunta final (bajo juramento): 📜</strong><br>¿Aceptas ser mi caso favorito (y el amor de mi vida) para siempre?</p>
+      <div class="botones">
+        <button id="btnSi" onclick="dijoSi()">¡Sí, acepto! 👩‍⚖️❤️</button>
+        <button id="btnNo" onmouseover="moverBoton()" onclick="moverBoton()">No 😾</button>
+      </div>
+    </div>
   </div>
 
   <script>
+    // Código para el botón escurridizo
+    function moverBoton() {
+      const btnNo = document.getElementById('btnNo');
+      btnNo.style.position = 'fixed';
+      
+      const maxX = window.innerWidth - btnNo.offsetWidth - 20;
+      const maxY = window.innerHeight - btnNo.offsetHeight - 20;
+      
+      const randomX = Math.floor(Math.random() * maxX) + 10;
+      const randomY = Math.floor(Math.random() * maxY) + 10;
+      
+      btnNo.style.left = randomX + 'px';
+      btnNo.style.top = randomY + 'px';
+    }
+
+    // Código cuando dice que sí con la pregunta extra
+    function dijoSi() {
+      // Aparece la ventana de confirmación
+      const segura = confirm("¿ESTÁS SEGURA? XD 🧐⚖️");
+      
+      if (segura) {
+        // Si le da a Aceptar
+        alert("¡Sentencia firme y consentida a mi favor! 👩‍⚖️👨‍⚖️ \n\n¡Caso cerrado! Te amo muchísimo mi amor, gracias por ser la mejor. ❤️🐈⚖️");
+      } else {
+        // Si le da a Cancelar
+        alert("¡No se aceptan apelaciones! Ya habías dicho que sí y es legalmente vinculante. 👩‍⚖️❤️ \n\n¡Te amo muchísimo mi amor! 🐈⚖️");
+      }
+    }
+
+    // Código para las partículas 
     function crearParticula() {
       const particula = document.createElement('div');
       particula.classList.add('particula');
-      const simbolos = ['✨', '❤️', '⚖️', '⭐'];
+      
+      const simbolos = ['✨', '❤️', '⚖️', '🐱', '🐈', '💕', '📜', '👩‍⚖️'];
       particula.innerHTML = simbolos[Math.floor(Math.random() * simbolos.length)];
+      
       particula.style.left = Math.random() * 100 + 'vw';
       particula.style.animationDuration = Math.random() * 4 + 3 + 's'; 
       document.body.appendChild(particula);
+      
       setTimeout(() => { particula.remove(); }, 7000);
     }
+    
     setInterval(crearParticula, 400);
   </script>
 
