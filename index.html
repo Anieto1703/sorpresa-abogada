@@ -1,0 +1,101 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2869
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 <!DOCTYPE html>\
+<html lang="es">\
+<head>\
+<meta charset="UTF-8">\
+<meta name="viewport" content="width=device-width, initial-scale=1.0">\
+<title>Para Katherine \uc0\u10084 \u65039 </title>\
+<style>\
+  body \{\
+    margin: 0;\
+    padding: 0;\
+    /* Fondo elegante en tonos oscuros y rojo rom\'e1ntico */\
+    background: linear-gradient(135deg, #1a1a2e, #8b0000, #e53935);\
+    color: white;\
+    font-family: 'Arial', sans-serif;\
+    text-align: center;\
+    height: 100vh;\
+    display: flex;\
+    flex-direction: column;\
+    justify-content: center;\
+    align-items: center;\
+    overflow: hidden;\
+  \}\
+  /* Efecto de tarjeta de cristal transparente */\
+  .tarjeta \{\
+    background: rgba(255, 255, 255, 0.1);\
+    backdrop-filter: blur(10px);\
+    padding: 40px 30px;\
+    border-radius: 20px;\
+    border: 1px solid rgba(255, 255, 255, 0.3);\
+    max-width: 85%;\
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);\
+    z-index: 10;\
+  \}\
+  h1 \{ \
+    font-size: 2.2em; \
+    margin-top: 0;\
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.6); \
+  \}\
+  p \{ \
+    font-size: 1.2em; \
+    line-height: 1.6; \
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8);\
+  \}\
+  .iconos \{ \
+    font-size: 3.5em; \
+    margin-bottom: 15px; \
+  \}\
+  /* Animaci\'f3n de las figuras que caen */\
+  .particula \{\
+    position: absolute;\
+    font-size: 22px;\
+    animation: caer linear infinite;\
+  \}\
+  @keyframes caer \{\
+    0% \{ transform: translateY(-10vh) rotate(0deg); opacity: 1; \}\
+    100% \{ transform: translateY(110vh) rotate(360deg); opacity: 0; \}\
+  \}\
+</style>\
+</head>\
+<body>\
+\
+  <!-- Contenedor principal de la tarjeta -->\
+  <div class="tarjeta">\
+    <div class="iconos">\uc0\u9878 \u65039  \u55357 \u56425 \u8205 \u9878 \u65039  \u10084 \u65039 </div>\
+    <h1>\'a1Feliz D\'eda de la Abogada,<br>Katherine Tueros!</h1>\
+    <p>Hoy en el D\'eda de la Abogada Peruana, te deseo un d\'eda tan extraordinario como t\'fa.</p>\
+    <p>Admiro profundamente tu pasi\'f3n, tu incansable b\'fasqueda de la justicia y la brillante profesional en la que te has convertido. Eres mi inspiraci\'f3n y mi mayor orgullo.</p>\
+    <p><strong>\'a1Sigue brillando, mi amor!</strong></p>\
+  </div>\
+\
+  <!-- C\'f3digo JavaScript para la animaci\'f3n -->\
+  <script>\
+    function crearParticula() \{\
+      const particula = document.createElement('div');\
+      particula.classList.add('particula');\
+      \
+      // Mezcla de corazones, estrellas y balanzas\
+      const simbolos = ['\uc0\u10024 ', '\u10084 \u65039 ', '\u9878 \u65039 ', '\u11088 '];\
+      particula.innerHTML = simbolos[Math.floor(Math.random() * simbolos.length)];\
+      \
+      particula.style.left = Math.random() * 100 + 'vw';\
+      particula.style.animationDuration = Math.random() * 4 + 3 + 's'; \
+      document.body.appendChild(particula);\
+      \
+      // Eliminar para que el celular no se ponga lento\
+      setTimeout(() => \{ particula.remove(); \}, 7000);\
+    \}\
+    \
+    // Crear una nueva figura cada 400 milisegundos\
+    setInterval(crearParticula, 400);\
+  </script>\
+\
+</body>\
+</html>}
