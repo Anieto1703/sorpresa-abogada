@@ -8,7 +8,6 @@
   body {
     margin: 0;
     padding: 0;
-    /* Fondo elegante en tonos oscuros y rojo romántico */
     background: linear-gradient(135deg, #1a1a2e, #8b0000, #e53935);
     color: white;
     font-family: 'Arial', sans-serif;
@@ -20,7 +19,6 @@
     align-items: center;
     overflow: hidden;
   }
-  /* Efecto de tarjeta de cristal transparente */
   .tarjeta {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
@@ -45,7 +43,6 @@
     font-size: 3.5em; 
     margin-bottom: 15px; 
   }
-  /* Animación de las figuras que caen */
   .particula {
     position: absolute;
     font-size: 22px;
@@ -59,7 +56,6 @@
 </head>
 <body>
 
-  <!-- Contenedor principal de la tarjeta -->
   <div class="tarjeta">
     <div class="iconos">⚖️ 👩‍⚖️ ❤️</div>
     <h1>¡Feliz Día de la Abogada,<br>Katherine Tueros!</h1>
@@ -68,25 +64,17 @@
     <p><strong>¡Sigue brillando, mi amor!</strong></p>
   </div>
 
-  <!-- Código JavaScript para la animación -->
   <script>
     function crearParticula() {
       const particula = document.createElement('div');
       particula.classList.add('particula');
-      
-      // Mezcla de corazones, estrellas y balanzas
       const simbolos = ['✨', '❤️', '⚖️', '⭐'];
       particula.innerHTML = simbolos[Math.floor(Math.random() * simbolos.length)];
-      
       particula.style.left = Math.random() * 100 + 'vw';
       particula.style.animationDuration = Math.random() * 4 + 3 + 's'; 
       document.body.appendChild(particula);
-      
-      // Eliminar para que el celular no se ponga lento
       setTimeout(() => { particula.remove(); }, 7000);
     }
-    
-    // Crear una nueva figura cada 400 milisegundos
     setInterval(crearParticula, 400);
   </script>
 
